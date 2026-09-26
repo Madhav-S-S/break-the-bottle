@@ -2,22 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Optimized viewport for mobile native app feel -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <!-- PWA Meta Tags for iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Clarity">
+    <meta name="apple-mobile-web-app-title" content="BreaktheBottle">
     <meta name="theme-color" content="#020617">
     
-    <!-- Beautiful Auto-Generated Icon (Embedded as Data URI) -->
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22%23020617%22%2F%3E%3Cpath%20d%3D%22M256%20120L380%20360H132z%22%20fill%3D%22none%22%20stroke%3D%22%2310b981%22%20stroke-width%3D%2224%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M256%20180L320%20330H192z%22%20fill%3D%22%2338bdf8%22%20opacity%3D%220.8%22%2F%3E%3C%2Fsvg%3E">
+    <!-- Beautiful Custom Icon: A sleek, minimalist bottle slashed through by a neon line -->
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22%23020617%22%20rx%3D%22112%22%2F%3E%3Cpath%20d%3D%22M224%2096%20V192%20L160%20288%20V432%20H352%20V288%20L288%20192%20V96%20H224%20Z%22%20fill%3D%22none%22%20stroke%3D%22%2310b981%22%20stroke-width%3D%2228%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M120%20220%20L392%20340%22%20stroke%3D%22%23020617%22%20stroke-width%3D%2242%22%2F%3E%3Cpath%20d%3D%22M120%20220%20L392%20340%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2216%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
     
-    <!-- Embedded Web App Manifest for Android Chrome Add-to-Homescreen -->
-    <link rel="manifest" href='data:application/manifest+json,%7B%22name%22%3A%22Strength%20and%20Clarity%22%2C%22short_name%22%3A%22Clarity%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23020617%22%2C%22theme_color%22%3A%22%23020617%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520viewBox%253D%25220%25200%2520512%2520512%2522%2520xmlns%253D%2522http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2522%253E%253Crect%2520width%253D%2522512%2522%2520height%253D%2522512%2522%2520fill%253D%2522%2523020617%2522%252F%253E%253Cpath%2520d%253D%2522M256%2520120L380%2520360H132z%2522%2520fill%253D%2522none%2522%2520stroke%253D%2522%252310b981%2522%2520stroke-width%253D%252224%2522%2520stroke-linejoin%253D%2522round%2522%252F%253E%253Cpath%2520d%253D%2522M256%2520180L320%2520330H192z%2522%2520fill%253D%2522%252338bdf8%2522%2520opacity%253D%25220.8%2522%252F%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D'>
+    <!-- PWA Manifest -->
+    <link rel="manifest" href='data:application/manifest+json,%7B%22name%22%3A%22BreaktheBottle%22%2C%22short_name%22%3A%22BreaktheBottle%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23020617%22%2C%22theme_color%22%3A%22%23020617%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%253Csvg%2520viewBox%253D%25220%25200%2520512%2520512%2522%2520xmlns%253D%2522http%253A%252F%252Fwww.w3.org%252F2000%252Fsvg%2522%253E%253Crect%2520width%253D%2522512%2522%2520height%253D%2522512%2522%2520fill%253D%2522%2523020617%2522%2520rx%253D%2522112%2522%252F%253E%253Cpath%2520d%253D%2522M224%252096%2520V192%2520L160%2520288%2520V432%2520H352%2520V288%2520L288%2520192%2520V96%2520H224%2520Z%2522%2520fill%253D%2522none%2522%2520stroke%253D%2522%252310b981%2522%2520stroke-width%253D%252228%2522%2520stroke-linejoin%253D%2522round%2522%252F%253E%253Cpath%2520d%253D%2522M120%2520220%2520L392%2520340%2522%2520stroke%253D%2522%2523020617%2522%2520stroke-width%253D%252242%2522%252F%253E%253Cpath%2520d%253D%2522M120%2520220%2520L392%2520340%2522%2520stroke%253D%2522%252338bdf8%2522%2520stroke-width%253D%252216%2522%2520stroke-linecap%253D%2522round%2522%252F%253E%253C%252Fsvg%253E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D'>
 
-    <title>Day of Strength and Clarity</title>
+    <title>BreaktheBottle</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,244 +24,130 @@
     <style>
         :root {
             --text-color: #ffffff;
-            --glow-color: rgba(167, 243, 208, 0.6);
+            --glow-color: rgba(16, 185, 129, 0.6);
+            --glow-blue: rgba(56, 189, 248, 0.5);
             --bg-dark: #020617;
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            /* Prevent highlighting when tapping on mobile */
+            margin: 0; padding: 0; box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
             color: var(--text-color);
-            min-height: 100vh;
-            min-height: 100dvh; /* Accounts for mobile browser UI bars */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background-color: var(--bg-dark);
-            position: relative;
-            /* Prevent accidental text selection on phones */
-            user-select: none; 
-            -webkit-user-select: none;
+            min-height: 100vh; min-height: 100dvh;
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; background-color: var(--bg-dark); position: relative;
+            user-select: none; -webkit-user-select: none;
         }
 
+        /* Background Graphics */
         .aurora-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            overflow: hidden;
-            background: linear-gradient(125deg, #020617, #0f172a, #1e1b4b, #064e3b, #020617);
+            position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0; overflow: hidden;
+            background: linear-gradient(125deg, #020617, #0f172a, #064e3b, #0c4a6e, #020617);
             background-size: 400% 400%;
             animation: auroraShift 25s ease-in-out infinite alternate;
         }
-
         .aurora-glow {
-            position: absolute;
-            width: 60vw;
-            height: 60vh;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(60px);
-            top: 20%;
-            left: -10%;
+            position: absolute; width: 60vw; height: 60vh;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(60px); top: 10%; left: -10%;
             animation: floatGlow 20s ease-in-out infinite alternate;
         }
-
         .aurora-glow-2 {
-            position: absolute;
-            width: 70vw;
-            height: 70vh;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-            bottom: -10%;
-            right: -10%;
+            position: absolute; width: 70vw; height: 70vh;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(80px); bottom: -10%; right: -10%;
             animation: floatGlow 25s ease-in-out infinite alternate-reverse;
         }
 
-        @keyframes auroraShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes auroraShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+        @keyframes floatGlow { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(8vw, -8vh) scale(1.1); } }
 
-        @keyframes floatGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10vw, -10vh) scale(1.2); }
-        }
-
+        /* Main Content UI */
         .content-container {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            max-width: 900px;
-            width: 100%;
+            position: relative; z-index: 10; display: flex; flex-direction: column;
+            align-items: center; text-align: center; padding: 2rem; width: 100%; max-width: 900px;
         }
+
+        .greeting-box { margin-bottom: 2rem; animation: fadeIn 2s ease-out; }
+        .greeting-title { font-size: clamp(1.2rem, 4vw, 2.5rem); font-weight: 600; margin-bottom: 0.5rem; }
+        .greeting-wish { font-size: clamp(0.9rem, 2.5vw, 1.2rem); font-weight: 300; color: rgba(255,255,255,0.7); }
 
         .number-display {
-            font-size: clamp(7rem, 22vw, 15rem);
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 0.5rem;
-            text-shadow: 
-                0 0 20px rgba(255, 255, 255, 0.3),
-                0 0 50px var(--glow-color),
-                0 0 100px rgba(52, 211, 153, 0.4);
+            font-size: clamp(6rem, 22vw, 14rem); font-weight: 800; line-height: 1; margin-bottom: 0.2rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 50px var(--glow-color), 0 0 100px var(--glow-blue);
             animation: gentlePulse 4s ease-in-out infinite;
         }
-
-        .ordinal-sup {
-            font-size: 0.35em;
-            vertical-align: super;
-            margin-left: 4px;
-            font-weight: 600;
-            opacity: 0.9;
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.02); filter: brightness(1.2); }
-        }
+        .ordinal-sup { font-size: 0.35em; vertical-align: super; margin-left: 4px; font-weight: 600; opacity: 0.9; }
+        @keyframes gentlePulse { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.02); filter: brightness(1.2); } }
 
         .subtitle {
-            font-size: clamp(0.9rem, 2.5vw, 1.5rem);
-            font-weight: 300;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
+            font-size: clamp(0.85rem, 2.5vw, 1.2rem); font-weight: 400; letter-spacing: 5px;
+            text-transform: uppercase; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem;
             animation: fadeIn 2s ease-out;
         }
 
+        /* Buttons */
         .settings-btn {
-            position: fixed;
-            bottom: max(25px, env(safe-area-inset-bottom));
-            right: max(25px, env(safe-area-inset-right));
-            z-index: 20;
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 15px; /* Larger tap target for phones */
-            touch-action: manipulation;
+            position: fixed; bottom: max(25px, env(safe-area-inset-bottom)); right: max(25px, env(safe-area-inset-right));
+            z-index: 20; background: transparent; border: none; color: rgba(255, 255, 255, 0.4);
+            cursor: pointer; transition: all 0.3s ease; padding: 15px; touch-action: manipulation;
         }
+        .settings-btn:hover, .settings-btn:active { color: white; transform: rotate(45deg); }
+        .settings-btn svg { width: 28px; height: 28px; fill: currentColor; }
 
-        .settings-btn:hover, .settings-btn:active {
-            color: rgba(255, 255, 255, 0.9);
-            transform: rotate(45deg);
-        }
-
-        .settings-btn svg {
-            width: 32px;
-            height: 32px;
-            fill: currentColor;
-        }
-
+        /* Modals */
         .modal {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(2, 6, 23, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            z-index: 50;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            z-index: 50; display: flex; justify-content: center; align-items: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s ease; padding: 20px;
         }
-
-        .modal.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-
+        .modal.active { opacity: 1; pointer-events: all; }
         .modal-content {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            width: 90%;
-            max-width: 400px;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 2rem; border-radius: 24px; text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); width: 100%; max-width: 420px;
+            transform: translateY(20px); transition: transform 0.3s ease;
+            max-height: 90vh; overflow-y: auto;
         }
+        .modal.active .modal-content { transform: translateY(0); }
+        .modal h3 { font-weight: 600; margin-bottom: 0.5rem; font-size: 1.5rem; }
+        .modal p.desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; line-height: 1.4; }
 
-        .modal.active .modal-content {
-            transform: translateY(0);
+        .input-group { text-align: left; margin-bottom: 1.5rem; position: relative; }
+        .input-group label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
+        
+        .styled-input {
+            width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px;
+            color: white; font-family: inherit; font-size: 1.1rem; outline: none;
+            transition: border 0.3s ease; color-scheme: dark;
         }
+        .styled-input:focus { border-color: rgba(56, 189, 248, 0.8); }
 
-        .modal h3 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .date-input {
-            width: 100%;
-            padding: 15px; /* Larger padding for mobile typing */
-            margin-bottom: 1.5rem;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            color: white;
-            font-family: inherit;
-            font-size: 1.1rem;
-            outline: none;
-            color-scheme: dark;
-            appearance: none;
-        }
-
-        .date-input:focus {
-            border-color: rgba(52, 211, 153, 0.8);
-        }
+        .flex-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+        .flex-row > * { flex: 1; margin-bottom: 0; }
+        .divider { margin: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); text-transform: uppercase; display: flex; align-items: center; }
+        .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); margin: 0 10px; }
 
         .btn {
-            width: 100%;
-            padding: 14px;
-            background: #10b981;
-            color: #020617;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            margin-bottom: 0.8rem;
-            touch-action: manipulation;
+            width: 100%; padding: 14px; border: none; border-radius: 12px;
+            font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
+            touch-action: manipulation; display: flex; justify-content: center; align-items: center; gap: 8px;
         }
+        .btn-primary { background: #10b981; color: #020617; }
+        .btn-primary:hover, .btn-primary:active { background: #34d399; }
+        .btn-secondary { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); }
+        .btn-secondary:hover, .btn-secondary:active { background: rgba(56, 189, 248, 0.3); }
+        .btn-cancel { background: transparent; color: rgba(255, 255, 255, 0.6); margin-top: 10px; }
+        .btn-cancel:hover, .btn-cancel:active { color: white; }
 
-        .btn:hover, .btn:active { background: #34d399; }
-        
-        .btn-cancel {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .btn-cancel:hover, .btn-cancel:active { background: rgba(255, 255, 255, 0.1); color: white; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -273,40 +157,86 @@
         <div class="aurora-glow-2"></div>
     </div>
 
+    <!-- Main Interface -->
     <main class="content-container">
-        <div id="day-counter" class="number-display">1<sup class="ordinal-sup">st</sup></div>
-        <h2 id="subtitle" class="subtitle">Day of Strength and Clarity</h2>
+        <div class="greeting-box">
+            <h1 id="greeting-title" class="greeting-title">Hello.</h1>
+            <p id="greeting-wish" class="greeting-wish">Welcome to BreaktheBottle.</p>
+        </div>
+        
+        <div id="day-counter" class="number-display">0</div>
+        <h2 id="subtitle" class="subtitle">Days of Strength</h2>
     </main>
 
-    <button class="settings-btn" onclick="toggleModal(true)" aria-label="Settings">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
-        </svg>
+    <!-- Settings Button -->
+    <button class="settings-btn" onclick="openModal()" aria-label="Settings">
+        <svg viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
     </button>
 
-    <div class="modal" id="settings-modal">
+    <!-- Onboarding / Settings Modal -->
+    <div class="modal" id="setup-modal">
         <div class="modal-content">
-            <h3>Start Date</h3>
-            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem;">
-                Saved automatically to this device.
-            </p>
-            <input type="date" id="date-input" class="date-input">
-            <button class="btn" onclick="updateApp()">Update Timeline</button>
-            <button class="btn btn-cancel" onclick="toggleModal(false)">Cancel</button>
+            <h3 id="modal-title">Break the Bottle</h3>
+            <p class="desc" id="modal-desc">Set up your journey below.</p>
+            
+            <div class="input-group">
+                <label>Your Name</label>
+                <input type="text" id="user-name" class="styled-input" placeholder="What should we call you?">
+            </div>
+
+            <div class="input-group">
+                <label>When did your journey begin?</label>
+                <button class="btn btn-secondary" onclick="setStartToToday()">
+                    <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    I'm Starting Today (Day 1)
+                </button>
+            </div>
+
+            <div class="divider">OR CHOOSE DATE</div>
+            
+            <div class="input-group">
+                <input type="date" id="start-date" class="styled-input" onchange="syncDaysFromDate()">
+            </div>
+
+            <div class="divider">OR ENTER CURRENT DAY</div>
+
+            <div class="input-group flex-row">
+                <input type="number" id="current-day-count" class="styled-input" placeholder="e.g. 5" min="1" oninput="syncDateFromDays()">
+                <div style="font-size:0.9rem; color:rgba(255,255,255,0.7); white-space:nowrap;">Days So Far</div>
+            </div>
+
+            <button class="btn btn-primary" onclick="saveData()">Save & Continue</button>
+            <button class="btn btn-cancel" id="btn-close-modal" onclick="closeModal()" style="display:none;">Cancel</button>
         </div>
     </div>
 
     <script>
-        // Use a generic default or let the user choose
-        const DEFAULT_DATE = '2026-08-04'; 
         const MS_PER_DAY = 1000 * 60 * 60 * 24;
+        let isFirstTime = true;
 
+        // Wishes array to randomize greeting encouragement
+        const wishes = [
+            "Stay strong on your journey today.",
+            "You are doing incredibly well.",
+            "One day at a time. Keep going.",
+            "Clarity and strength are yours today.",
+            "Every day is a victory. Be proud.",
+            "Keep breaking the bottle."
+        ];
+
+        // Format Date to YYYY-MM-DD for the input picker accurately
+        function formatDateForInput(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        // Get ordinal string (1st, 2nd, 3rd)
         function getOrdinalSuffix(n) {
             const absN = Math.abs(n);
             const remainder100 = absN % 100;
-            if (remainder100 >= 11 && remainder100 <= 13) {
-                return 'th';
-            }
+            if (remainder100 >= 11 && remainder100 <= 13) return 'th';
             switch (absN % 10) {
                 case 1:  return 'st';
                 case 2:  return 'nd';
@@ -315,6 +245,17 @@
             }
         }
 
+        // Generate Time-based greeting
+        function getTimeGreeting(name) {
+            const hour = new Date().getHours();
+            let timeString = "Good evening";
+            if (hour >= 5 && hour < 12) timeString = "Good morning";
+            else if (hour >= 12 && hour < 18) timeString = "Good afternoon";
+            
+            return name ? `${timeString}, ${name}.` : `${timeString}.`;
+        }
+
+        // Calculate Days (Day 1 = start date)
         function calculateOrdinalDay(startDateStr) {
             const start = new Date(startDateStr + 'T00:00:00Z');
             const now = new Date();
@@ -326,73 +267,112 @@
             return fullDaysElapsed >= 0 ? fullDaysElapsed + 1 : fullDaysElapsed;
         }
 
-        function initApp(forcedDate = null) {
-            let since = forcedDate;
+        // UI Interactions in Modal
+        function setStartToToday() {
+            document.getElementById('start-date').value = formatDateForInput(new Date());
+            document.getElementById('current-day-count').value = 1;
+        }
 
-            // 1. Check URL parameters first (so sharing web links still works)
-            if (!since) {
-                const params = new URLSearchParams(window.location.search);
-                since = params.get('since');
-                if (since) {
-                    localStorage.setItem('clarityStartDate', since);
-                }
+        function syncDaysFromDate() {
+            const dateVal = document.getElementById('start-date').value;
+            if (dateVal) {
+                const days = calculateOrdinalDay(dateVal);
+                document.getElementById('current-day-count').value = days > 0 ? days : "";
             }
+        }
 
-            // 2. Check local storage (Crucial for mobile PWA usage)
-            if (!since) {
-                since = localStorage.getItem('clarityStartDate');
+        function syncDateFromDays() {
+            const days = parseInt(document.getElementById('current-day-count').value);
+            if (!isNaN(days)) {
+                // If today is day 1, diff is 0. If day is 5, diff is 4 days ago.
+                const diffDays = days >= 1 ? days - 1 : 0; 
+                const d = new Date();
+                d.setDate(d.getDate() - diffDays);
+                document.getElementById('start-date').value = formatDateForInput(d);
             }
+        }
+
+        function openModal() {
+            const modal = document.getElementById('setup-modal');
+            const cancelBtn = document.getElementById('btn-close-modal');
             
-            // 3. Fallback
-            if (!since || isNaN(new Date(since).getTime())) {
-                since = DEFAULT_DATE;
+            // Populate current data if it exists
+            const savedName = localStorage.getItem('btb_name');
+            const savedDate = localStorage.getItem('btb_date');
+            
+            if (savedName) document.getElementById('user-name').value = savedName;
+            if (savedDate) {
+                document.getElementById('start-date').value = savedDate;
+                syncDaysFromDate();
+                cancelBtn.style.display = "block";
+                document.getElementById('modal-title').innerText = "Settings";
+                document.getElementById('modal-desc').innerText = "Update your details below.";
+            } else {
+                setStartToToday(); // Default to today for completely new users
+                cancelBtn.style.display = "none";
+                document.getElementById('modal-title').innerText = "Break the Bottle";
+                document.getElementById('modal-desc').innerText = "Set up your journey below.";
             }
 
-            // Lock it into local storage
-            localStorage.setItem('clarityStartDate', since);
+            modal.classList.add('active');
+        }
 
-            // Set up visuals
-            const currentDayNumber = calculateOrdinalDay(since);
+        function closeModal() {
+            document.getElementById('setup-modal').classList.remove('active');
+        }
+
+        function saveData() {
+            const name = document.getElementById('user-name').value.trim();
+            const date = document.getElementById('start-date').value;
+
+            if (!name || !date) {
+                alert("Please enter both your name and a start date.");
+                return;
+            }
+
+            localStorage.setItem('btb_name', name);
+            localStorage.setItem('btb_date', date);
+            
+            closeModal();
+            renderApp();
+        }
+
+        function renderApp() {
+            const savedName = localStorage.getItem('btb_name');
+            const savedDate = localStorage.getItem('btb_date');
+
+            if (!savedName || !savedDate) {
+                openModal();
+                return;
+            }
+
+            // Update Greetings
+            document.getElementById('greeting-title').innerText = getTimeGreeting(savedName);
+            
+            // Pick a random wish to display, based on today's date so it changes daily, or truly random
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            document.getElementById('greeting-wish').innerText = randomWish;
+
+            // Update Numbers
+            const currentDayNumber = calculateOrdinalDay(savedDate);
             const counterElement = document.getElementById('day-counter');
             const subtitleElement = document.getElementById('subtitle');
             
             if (currentDayNumber > 0) {
                 const suffix = getOrdinalSuffix(currentDayNumber);
                 counterElement.innerHTML = `${currentDayNumber}<sup class="ordinal-sup">${suffix}</sup>`;
-                subtitleElement.innerText = "Day of Strength and Clarity";
+                subtitleElement.innerText = "Alcohol-Free Day";
             } else {
                 const daysUntil = Math.abs(currentDayNumber);
                 counterElement.innerText = daysUntil;
                 subtitleElement.innerText = `Days Until Journey Begins`;
             }
-
-            document.getElementById('date-input').value = since;
-            
-            // Sync URL without reloading so sharing works
-            const url = new URL(window.location);
-            url.searchParams.set('since', since);
-            try {
-                window.history.replaceState({}, '', url);
-            } catch (e) {}
         }
 
-        function toggleModal(show) {
-            const modal = document.getElementById('settings-modal');
-            if (show) {
-                modal.classList.add('active');
-            } else {
-                modal.classList.remove('active');
-            }
-        }
-
-        function updateApp() {
-            const selectedDate = document.getElementById('date-input').value;
-            if (!selectedDate) return;
-            initApp(selectedDate);
-            toggleModal(false);
-        }
-
-        window.addEventListener('DOMContentLoaded', () => initApp());
+        // Init App on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderApp();
+        });
     </script>
 </body>
 </html>
