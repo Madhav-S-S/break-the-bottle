@@ -96,9 +96,9 @@
             width: 100%;
         }
 
-        /* Massive glowing ordinal display */
+        /* The massive glowing number */
         .number-display {
-            font-size: clamp(6rem, 20vw, 13rem);
+            font-size: clamp(8rem, 25vw, 15rem);
             font-weight: 800;
             line-height: 1;
             margin-bottom: 0.5rem;
@@ -109,11 +109,12 @@
             animation: gentlePulse 4s ease-in-out infinite;
         }
 
-        .number-display .ordinal-suffix {
-            font-size: 0.45em;
+        .ordinal-sup {
+            font-size: 0.35em;
             vertical-align: super;
-            margin-left: 2px;
+            margin-left: 4px;
             font-weight: 600;
+            opacity: 0.9;
         }
 
         @keyframes gentlePulse {
@@ -257,8 +258,8 @@
 
     <!-- Main Content -->
     <main class="content-container">
-        <div id="day-counter" class="number-display">0</div>
-        <h2 id="day-subtitle" class="subtitle">Day of Strength and Clarity</h2>
+        <div id="day-counter" class="number-display">1<sup class="ordinal-sup">st</sup></div>
+        <h2 id="subtitle" class="subtitle">Day of Strength and Clarity</h2>
     </main>
 
     <!-- Settings Button -->
@@ -282,7 +283,7 @@
     </div>
 
     <script>
-        const DEFAULT_DATE = '2026-08-05';
+        const DEFAULT_DATE = '2026-08-04';
         const MS_PER_DAY = 1000 * 60 * 60 * 24;
 
         function getOrdinalSuffix(n) {
@@ -292,21 +293,24 @@
                 return 'th';
             }
             switch (absN % 10) {
-                case 1: return 'st';
-                case 2: return 'nd';
-                case 3: return 'rd';
+                case 1:  return 'st';
+                case 2:  return 'nd';
+                case 3:  return 'rd';
                 default: return 'th';
             }
         }
 
-        function calculateDayNumber(startDateStr) {
+        // Calculates ordinal day (today = 1st day)
+        function calculateOrdinalDay(startDateStr) {
             const start = new Date(startDateStr + 'T00:00:00Z');
             const now = new Date();
             const today = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
             
             const diffTime = today - start;
-            // 0 on the start date, 1 tomorrow, 2 the day after
-            return Math.floor(diffTime / MS_PER_DAY);
+            const fullDaysElapsed = Math.floor(diffTime / MS_PER_DAY);
+            
+            // If started today: 0 elapsed + 1 = 1st day
+            return fullDaysElapsed >= 0 ? fullDaysElapsed + 1 : fullDaysElapsed;
         }
 
         function initApp(forcedDate = null) {
@@ -329,17 +333,19 @@
                 }
             }
 
-            const dayNumber = calculateDayNumber(since);
+            const currentDayNumber = calculateOrdinalDay(since);
             const counterElement = document.getElementById('day-counter');
-            const subtitleElement = document.getElementById('day-subtitle');
+            const subtitleElement = document.getElementById('subtitle');
             
-            if (dayNumber <= 0) {
-                counterElement.innerHTML = '0';
-                subtitleElement.innerText = 'Days of Strength and Clarity';
+            if (currentDayNumber > 0) {
+                const suffix = getOrdinalSuffix(currentDayNumber);
+                counterElement.innerHTML = `${currentDayNumber}<sup class="ordinal-sup">${suffix}</sup>`;
+                subtitleElement.innerText = "Day of Strength and Clarity";
             } else {
-                const suffix = getOrdinalSuffix(dayNumber);
-                counterElement.innerHTML = `${dayNumber}<span class="ordinal-suffix">${suffix}</span>`;
-                subtitleElement.innerText = 'Day of Strength and Clarity';
+                // If a future date is chosen
+                const daysUntil = Math.abs(currentDayNumber);
+                counterElement.innerText = daysUntil;
+                subtitleElement.innerText = `Days Until Journey Begins`;
             }
 
             document.getElementById('date-input').value = since;
@@ -371,7 +377,7 @@
             toggleModal(false);
         }
 
-        window.addEventListener('DOMContentLoaded', initApp);
+        window.addEventListener('DOMContentLoaded', () => initApp());
     </script>
 </body>
 </html>
