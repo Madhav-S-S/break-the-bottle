@@ -700,7 +700,7 @@
 
         window.handleGoogleSignIn = async function() {
             const errEl = document.getElementById('login-error');
-            errEl.innerText = '';
+            errEl.innerHTML = '';
 
             if (isDemoMode) {
                 currentUser = {
@@ -723,6 +723,20 @@
                     errEl.innerText = 'Sign in was cancelled.';
                 } else if (error.code === 'auth/operation-not-allowed') {
                     errEl.innerText = 'Google Sign-In is not enabled yet in your Firebase console (Authentication -> Sign-in method).';
+                } else if (error.code === 'auth/unauthorized-domain') {
+                    const currentDomain = window.location.hostname || 'this domain';
+                    errEl.innerHTML = `
+                        <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 12px; margin-top: 10px; text-align: left;">
+                            <strong style="color: #fca5a5;">Domain Authorization Required</strong><br>
+                            Firebase needs permission for domain: <code style="background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px; color: #fff;">${currentDomain}</code><br><br>
+                            <strong>To fix:</strong>
+                            <ol style="margin-left: 20px; margin-top: 6px; font-size: 0.8rem; color: rgba(255,255,255,0.8);">
+                                <li>Open Firebase Console &rarr; <strong>Authentication</strong></li>
+                                <li>Click the <strong>Settings</strong> tab &rarr; <strong>Authorized domains</strong></li>
+                                <li>Click <strong>Add domain</strong> and paste: <b style="color: #34d399;">${currentDomain}</b></li>
+                            </ol>
+                        </div>
+                    `;
                 } else {
                     errEl.innerText = error.message || 'Failed to sign in with Google.';
                 }
