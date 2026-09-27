@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-title" content="BreaktheBottle">
     <meta name="theme-color" content="#020617">
     
-    <!-- Beautiful Custom Icon: A sleek, minimalist bottle slashed through by a neon line -->
+    <!-- Beautiful Custom Icon -->
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22%23020617%22%20rx%3D%22112%22%2F%3E%3Cpath%20d%3D%22M224%2096%20V192%20L160%20288%20V432%20H352%20V288%20L288%20192%20V96%20H224%20Z%22%20fill%3D%22none%22%20stroke%3D%22%2310b981%22%20stroke-width%3D%2228%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M120%20220%20L392%20340%22%20stroke%3D%22%23020617%22%20stroke-width%3D%2242%22%2F%3E%3Cpath%20d%3D%22M120%20220%20L392%20340%22%20stroke%3D%22%2338bdf8%22%20stroke-width%3D%2216%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
     
     <!-- PWA Manifest -->
@@ -24,8 +24,8 @@
     <style>
         :root {
             --text-color: #ffffff;
-            --glow-color: rgba(16, 185, 129, 0.6);
-            --glow-blue: rgba(56, 189, 248, 0.5);
+            --glow-color: rgba(16, 185, 129, 0.6); /* Default Emerald */
+            --glow-secondary: rgba(56, 189, 248, 0.5); /* Default Blue */
             --bg-dark: #020617;
         }
 
@@ -41,27 +41,56 @@
             display: flex; justify-content: center; align-items: center;
             overflow: hidden; background-color: var(--bg-dark); position: relative;
             user-select: none; -webkit-user-select: none;
+            transition: all 1s ease;
         }
+
+        /* --- MILESTONE THEME CHANGES --- */
+        body.milestone-day {
+            --glow-color: rgba(250, 204, 21, 0.8); /* Golden Celebration Glow */
+            --glow-secondary: rgba(236, 72, 153, 0.6); /* Pink/Magenta Celebration Glow */
+        }
+        body.milestone-day .aurora-bg {
+            background: linear-gradient(125deg, #020617, #31102f, #451a03, #1e1b4b, #020617);
+        }
+
+        /* App Branding (Top Left) */
+        .brand-logo {
+            position: absolute; top: max(25px, env(safe-area-inset-top)); left: max(25px, env(safe-area-inset-left));
+            font-size: 0.9rem; font-weight: 800; letter-spacing: 2px; color: rgba(255, 255, 255, 0.25);
+            text-transform: uppercase; z-index: 20; transition: color 0.3s ease;
+        }
+        .brand-logo:hover, .brand-logo:active { color: rgba(255, 255, 255, 0.8); }
+
+        /* Developer Credits (Bottom Center) */
+        .developer-credits {
+            position: absolute; bottom: max(20px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+            font-size: 0.7rem; font-weight: 400; letter-spacing: 1px; color: rgba(255, 255, 255, 0.2);
+            z-index: 20; white-space: nowrap; display: flex; align-items: center; gap: 8px;
+        }
+        .developer-credits a { color: rgba(255, 255, 255, 0.35); text-decoration: none; transition: color 0.3s ease; display: flex; align-items: center; }
+        .developer-credits a:hover, .developer-credits a:active { color: rgba(56, 189, 248, 0.9); }
+        .developer-credits svg { width: 14px; height: 14px; }
+        .dot { font-size: 0.5rem; opacity: 0.4; }
 
         /* Background Graphics */
         .aurora-bg {
             position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: 0; overflow: hidden;
             background: linear-gradient(125deg, #020617, #0f172a, #064e3b, #0c4a6e, #020617);
-            background-size: 400% 400%;
-            animation: auroraShift 25s ease-in-out infinite alternate;
+            background-size: 400% 400%; animation: auroraShift 25s ease-in-out infinite alternate;
+            transition: background 1.5s ease;
         }
         .aurora-glow {
             position: absolute; width: 60vw; height: 60vh;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%);
-            border-radius: 50%; filter: blur(60px); top: 10%; left: -10%;
-            animation: floatGlow 20s ease-in-out infinite alternate;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(70px); top: 10%; left: -10%; opacity: 0.25;
+            animation: floatGlow 20s ease-in-out infinite alternate; transition: background 1s ease;
         }
         .aurora-glow-2 {
             position: absolute; width: 70vw; height: 70vh;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
-            border-radius: 50%; filter: blur(80px); bottom: -10%; right: -10%;
-            animation: floatGlow 25s ease-in-out infinite alternate-reverse;
+            background: radial-gradient(circle, var(--glow-secondary) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(90px); bottom: -10%; right: -10%; opacity: 0.25;
+            animation: floatGlow 25s ease-in-out infinite alternate-reverse; transition: background 1s ease;
         }
 
         @keyframes auroraShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
@@ -75,32 +104,42 @@
 
         .greeting-box { margin-bottom: 2rem; animation: fadeIn 2s ease-out; }
         .greeting-title { font-size: clamp(1.2rem, 4vw, 2.5rem); font-weight: 600; margin-bottom: 0.5rem; }
-        .greeting-wish { font-size: clamp(0.9rem, 2.5vw, 1.2rem); font-weight: 300; color: rgba(255,255,255,0.7); }
+        .greeting-wish { font-size: clamp(0.9rem, 2.5vw, 1.2rem); font-weight: 300; color: rgba(255,255,255,0.7); max-width: 80%; margin: 0 auto; line-height: 1.4; }
+
+        /* Milestone Badge */
+        .milestone-badge {
+            display: none; background: linear-gradient(90deg, #fbbf24, #f59e0b); color: #000;
+            padding: 6px 20px; border-radius: 20px; font-size: 0.8rem; font-weight: 800;
+            letter-spacing: 3px; margin-bottom: 1rem; text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        body.milestone-day .milestone-badge { display: inline-block; }
+        @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
         .number-display {
             font-size: clamp(6rem, 22vw, 14rem); font-weight: 800; line-height: 1; margin-bottom: 0.2rem;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 50px var(--glow-color), 0 0 100px var(--glow-blue);
-            animation: gentlePulse 4s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 50px var(--glow-color), 0 0 100px var(--glow-secondary);
+            animation: gentlePulse 4s ease-in-out infinite; cursor: pointer;
         }
-        .ordinal-sup { font-size: 0.35em; vertical-align: super; margin-left: 4px; font-weight: 600; opacity: 0.9; }
+        .ordinal-sup { font-size: 0.35em; vertical-align: super; margin-left: 4px; font-weight: 600; opacity: 0.9; pointer-events: none; }
         @keyframes gentlePulse { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.02); filter: brightness(1.2); } }
 
         .subtitle {
-            font-size: clamp(0.85rem, 2.5vw, 1.2rem); font-weight: 400; letter-spacing: 5px;
+            font-size: clamp(0.75rem, 2.5vw, 1.2rem); font-weight: 400; letter-spacing: 5px;
             text-transform: uppercase; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem;
             animation: fadeIn 2s ease-out;
         }
 
-        /* Buttons */
+        /* Buttons & Modals */
         .settings-btn {
-            position: fixed; bottom: max(25px, env(safe-area-inset-bottom)); right: max(25px, env(safe-area-inset-right));
-            z-index: 20; background: transparent; border: none; color: rgba(255, 255, 255, 0.4);
+            position: absolute; bottom: max(25px, env(safe-area-inset-bottom)); right: max(25px, env(safe-area-inset-right));
+            z-index: 20; background: transparent; border: none; color: rgba(255, 255, 255, 0.3);
             cursor: pointer; transition: all 0.3s ease; padding: 15px; touch-action: manipulation;
         }
         .settings-btn:hover, .settings-btn:active { color: white; transform: rotate(45deg); }
-        .settings-btn svg { width: 28px; height: 28px; fill: currentColor; }
+        .settings-btn svg { width: 26px; height: 26px; fill: currentColor; }
 
-        /* Modals */
         .modal {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: rgba(2, 6, 23, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -121,11 +160,9 @@
 
         .input-group { text-align: left; margin-bottom: 1.5rem; position: relative; }
         .input-group label { display: block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; }
-        
         .styled-input {
-            width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 12px;
-            color: white; font-family: inherit; font-size: 1.1rem; outline: none;
+            width: 100%; padding: 14px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px; color: white; font-family: inherit; font-size: 1.1rem; outline: none;
             transition: border 0.3s ease; color-scheme: dark;
         }
         .styled-input:focus { border-color: rgba(56, 189, 248, 0.8); }
@@ -136,9 +173,8 @@
         .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.1); margin: 0 10px; }
 
         .btn {
-            width: 100%; padding: 14px; border: none; border-radius: 12px;
-            font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s ease;
-            touch-action: manipulation; display: flex; justify-content: center; align-items: center; gap: 8px;
+            width: 100%; padding: 14px; border: none; border-radius: 12px; font-weight: 700; font-size: 1rem;
+            cursor: pointer; transition: all 0.3s ease; touch-action: manipulation; display: flex; justify-content: center; align-items: center; gap: 8px;
         }
         .btn-primary { background: #10b981; color: #020617; }
         .btn-primary:hover, .btn-primary:active { background: #34d399; }
@@ -148,6 +184,25 @@
         .btn-cancel:hover, .btn-cancel:active { color: white; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Confetti Elements */
+        .confetti-container {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 100; overflow: hidden;
+        }
+        .confetti {
+            position: absolute; width: 8px; height: 16px; top: -20px; animation: fall linear forwards; opacity: 0;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg) scale(0.5); opacity: 0; }
+        }
+
+        /* Adjustments for smaller phones */
+        @media (max-width: 450px) {
+            .brand-logo { font-size: 0.8rem; left: 20px; top: max(20px, env(safe-area-inset-top)); }
+            .developer-credits { font-size: 0.65rem; }
+            .settings-btn { right: max(15px, env(safe-area-inset-right)); }
+        }
     </style>
 </head>
 <body>
@@ -157,23 +212,39 @@
         <div class="aurora-glow-2"></div>
     </div>
 
-    <!-- Main Interface -->
+    <div class="brand-logo">BreaktheBottle</div>
+
     <main class="content-container">
         <div class="greeting-box">
             <h1 id="greeting-title" class="greeting-title">Hello.</h1>
             <p id="greeting-wish" class="greeting-wish">Welcome to BreaktheBottle.</p>
         </div>
         
-        <div id="day-counter" class="number-display">0</div>
-        <h2 id="subtitle" class="subtitle">Days of Strength</h2>
+        <div id="milestone-badge" class="milestone-badge">Milestone Reached!</div>
+        <!-- Tap the number on a milestone day to fire confetti again -->
+        <div id="day-counter" class="number-display" onclick="fireConfettiIfMilestone()">0</div>
+        
+        <h2 id="subtitle" class="subtitle">DAY OF STRENGTH AND CLARITY</h2>
     </main>
 
-    <!-- Settings Button -->
+    <div class="developer-credits">
+        Created by Madhav
+        <span class="dot">&bull;</span>
+        <a href="mailto:madhavgs2002@gmail.com">madhavgs2002@gmail.com</a>
+        <span class="dot">&bull;</span>
+        <a href="https://www.instagram.com/madhavology_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+        </a>
+    </div>
+
     <button class="settings-btn" onclick="openModal()" aria-label="Settings">
         <svg viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></svg>
     </button>
 
-    <!-- Onboarding / Settings Modal -->
     <div class="modal" id="setup-modal">
         <div class="modal-content">
             <h3 id="modal-title">Break the Bottle</h3>
@@ -212,19 +283,66 @@
 
     <script>
         const MS_PER_DAY = 1000 * 60 * 60 * 24;
-        let isFirstTime = true;
-
-        // Wishes array to randomize greeting encouragement
+        
+        // Expanded motivational quotes
         const wishes = [
             "Stay strong on your journey today.",
             "You are doing incredibly well.",
             "One day at a time. Keep going.",
             "Clarity and strength are yours today.",
             "Every day is a victory. Be proud.",
-            "Keep breaking the bottle."
+            "Keep breaking the bottle.",
+            "Every choice to stay strong shapes your future.",
+            "You are building a life you don't need to escape from.",
+            "Progress is quiet, but its results are loud.",
+            "Another day of choosing yourself.",
+            "Strength isn't never feeling tempted, it's choosing not to give in.",
+            "Your future self is thanking you right now.",
+            "Clarity is a superpower. You have it today.",
+            "Small steps every day lead to massive mountains climbed.",
+            "Breathe in strength, exhale doubt.",
+            "You've got this, one moment at a time.",
+            "Embrace the clear mind and the steady heart.",
+            "You are stronger than any craving."
         ];
 
-        // Format Date to YYYY-MM-DD for the input picker accurately
+        // The specific days to trigger a milestone celebration
+        const milestoneDays = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000];
+        let isCurrentDayMilestone = false;
+
+        function fireConfetti() {
+            const container = document.createElement('div');
+            container.className = 'confetti-container';
+            document.body.appendChild(container);
+            
+            const colors = ['#fbbf24', '#f472b6', '#38bdf8', '#10b981', '#c084fc', '#ffffff'];
+            
+            for(let i=0; i<80; i++) {
+                const conf = document.createElement('div');
+                conf.className = 'confetti';
+                conf.style.left = Math.random() * 100 + 'vw';
+                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Randomize fall speeds and delays
+                const duration = Math.random() * 2 + 2.5; 
+                const delay = Math.random() * 0.5;
+                
+                conf.style.animationDuration = duration + 's';
+                conf.style.animationDelay = delay + 's';
+                
+                container.appendChild(conf);
+            }
+            
+            // Clean up DOM after animation finishes
+            setTimeout(() => { container.remove(); }, 5000);
+        }
+
+        function fireConfettiIfMilestone() {
+            if (isCurrentDayMilestone) {
+                fireConfetti();
+            }
+        }
+
         function formatDateForInput(date) {
             const y = date.getFullYear();
             const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -232,7 +350,6 @@
             return `${y}-${m}-${d}`;
         }
 
-        // Get ordinal string (1st, 2nd, 3rd)
         function getOrdinalSuffix(n) {
             const absN = Math.abs(n);
             const remainder100 = absN % 100;
@@ -245,7 +362,6 @@
             }
         }
 
-        // Generate Time-based greeting
         function getTimeGreeting(name) {
             const hour = new Date().getHours();
             let timeString = "Good evening";
@@ -255,7 +371,6 @@
             return name ? `${timeString}, ${name}.` : `${timeString}.`;
         }
 
-        // Calculate Days (Day 1 = start date)
         function calculateOrdinalDay(startDateStr) {
             const start = new Date(startDateStr + 'T00:00:00Z');
             const now = new Date();
@@ -267,7 +382,6 @@
             return fullDaysElapsed >= 0 ? fullDaysElapsed + 1 : fullDaysElapsed;
         }
 
-        // UI Interactions in Modal
         function setStartToToday() {
             document.getElementById('start-date').value = formatDateForInput(new Date());
             document.getElementById('current-day-count').value = 1;
@@ -284,7 +398,6 @@
         function syncDateFromDays() {
             const days = parseInt(document.getElementById('current-day-count').value);
             if (!isNaN(days)) {
-                // If today is day 1, diff is 0. If day is 5, diff is 4 days ago.
                 const diffDays = days >= 1 ? days - 1 : 0; 
                 const d = new Date();
                 d.setDate(d.getDate() - diffDays);
@@ -296,7 +409,6 @@
             const modal = document.getElementById('setup-modal');
             const cancelBtn = document.getElementById('btn-close-modal');
             
-            // Populate current data if it exists
             const savedName = localStorage.getItem('btb_name');
             const savedDate = localStorage.getItem('btb_date');
             
@@ -308,7 +420,7 @@
                 document.getElementById('modal-title').innerText = "Settings";
                 document.getElementById('modal-desc').innerText = "Update your details below.";
             } else {
-                setStartToToday(); // Default to today for completely new users
+                setStartToToday(); 
                 cancelBtn.style.display = "none";
                 document.getElementById('modal-title').innerText = "Break the Bottle";
                 document.getElementById('modal-desc').innerText = "Set up your journey below.";
@@ -346,14 +458,13 @@
                 return;
             }
 
-            // Update Greetings
             document.getElementById('greeting-title').innerText = getTimeGreeting(savedName);
             
-            // Pick a random wish to display, based on today's date so it changes daily, or truly random
-            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-            document.getElementById('greeting-wish').innerText = randomWish;
+            // Generate a random motivational wish based on current date so it stays fixed for the day
+            const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+            const randomWishIndex = (dayOfYear + savedName.length) % wishes.length;
+            document.getElementById('greeting-wish').innerText = wishes[randomWishIndex];
 
-            // Update Numbers
             const currentDayNumber = calculateOrdinalDay(savedDate);
             const counterElement = document.getElementById('day-counter');
             const subtitleElement = document.getElementById('subtitle');
@@ -361,15 +472,27 @@
             if (currentDayNumber > 0) {
                 const suffix = getOrdinalSuffix(currentDayNumber);
                 counterElement.innerHTML = `${currentDayNumber}<sup class="ordinal-sup">${suffix}</sup>`;
-                subtitleElement.innerText = "day of strength and clarity";
+                subtitleElement.innerText = "DAY OF STRENGTH AND CLARITY";
+                
+                // --- Milestone Logic ---
+                isCurrentDayMilestone = milestoneDays.includes(currentDayNumber);
+                if (isCurrentDayMilestone) {
+                    document.body.classList.add('milestone-day');
+                    // Automatically fire confetti when loading a milestone day
+                    setTimeout(() => fireConfetti(), 300);
+                } else {
+                    document.body.classList.remove('milestone-day');
+                }
+
             } else {
                 const daysUntil = Math.abs(currentDayNumber);
                 counterElement.innerText = daysUntil;
-                subtitleElement.innerText = `Days Until Journey Begins`;
+                subtitleElement.innerText = `DAYS UNTIL JOURNEY BEGINS`;
+                document.body.classList.remove('milestone-day');
+                isCurrentDayMilestone = false;
             }
         }
 
-        // Init App on Load
         window.addEventListener('DOMContentLoaded', () => {
             renderApp();
         });
